@@ -1,8 +1,16 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+from app.core.config import settings
+
+app = FastAPI(
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+)
 
 
 @app.get("/")
 async def root():
-    return {"message": "FastAPI Backend Starter"}
+    return {
+        "message": f"{settings.APP_NAME} is running",
+        "version": settings.APP_VERSION,
+    }

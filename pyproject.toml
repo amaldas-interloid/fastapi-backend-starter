@@ -1,20 +1,33 @@
 [project]
 name = "fastapi-backend-starter"
 version = "0.1.0"
-description = "Add your description here"
+description = "Production-ready FastAPI starter template"
 readme = "README.md"
-authors = [
-    { name = "amaldas-interloid", email = "amaldas@interloid.com" }
-]
 requires-python = ">=3.12"
+authors = [
+    { name = "Amal Das", email = "amaldas@interloid.com" }
+]
+
 dependencies = [
     "fastapi>=0.141.1",
-    "uvicorn>=0.52.1",
+    "uvicorn>=0.35.0",
+    "pydantic-settings>=2.14.2",
+    "python-dotenv>=1.2.2",
 ]
 
-[project.scripts]
-fastapi-backend-starter = "fastapi_backend_starter:main"
+[dependency-groups]
+dev = []
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [build-system]
-requires = ["uv_build>=0.12.1,<0.13.0"]
-build-backend = "uv_build"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
