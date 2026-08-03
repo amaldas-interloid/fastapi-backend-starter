@@ -71,3 +71,17 @@ cp .env.example .env
 ```
 
 Application settings are loaded automatically from `.env`.
+
+## API Structure
+
+The project organizes endpoints by API version.
+
+```text
+app/api/
+├── deps.py
+└── v1/
+    ├── api.py
+    └── endpoints/
+```
+
+All routers are registered in `app/api/v1/api.py` and included in `app/main.py`.
