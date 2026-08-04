@@ -109,3 +109,11 @@ The application enables CORS middleware to allow frontend applications to commun
 **Production**
 
 - Replace `allow_origins=["*"]` with a list of trusted frontend domains.
+
+### Request Logging
+
+Logs every HTTP request with:
+
+- HTTP method
+- Request path
+- Response status code

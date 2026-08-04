@@ -6,6 +6,10 @@ from app.core.logging import logger, setup_logging
 from app.core.config import settings
 from app.api.v1.api import api_router
 from app.middleware.cors import setup_cors
+from app.middleware.process_time import ProcessTimeMiddleware
+from app.middleware.request_id import RequestIDMiddleware
+from app.middleware.request_logging import RequestLoggingMiddleware
+
 
 
 setup_logging()
@@ -26,6 +30,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 setup_cors(app)
+
+app.add_middleware(RequestLoggingMiddleware)
+app.add_middleware(RequestIDMiddleware)
+app.add_middleware(ProcessTimeMiddleware)
 
 app.include_router(api_router)
 
