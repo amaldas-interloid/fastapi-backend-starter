@@ -95,3 +95,17 @@ The application uses Python's built-in `logging` module with centralized configu
 - Configurable log level
 - Startup and shutdown logging
 - Standardized log format
+
+## Middleware
+
+### CORS
+
+The application enables CORS middleware to allow frontend applications to communicate with the API.
+
+**Development**
+
+- All origins are allowed (`*`).
+
+**Production**
+
+- Replace `allow_origins=["*"]` with a list of trusted frontend domains.

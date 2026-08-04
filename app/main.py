@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from app.core.logging import logger, setup_logging
 from app.core.config import settings
 from app.api.v1.api import api_router
+from app.middleware.cors import setup_cors
 
 
 setup_logging()
@@ -24,6 +25,7 @@ app = FastAPI(
     version=settings.APP_VERSION,
     lifespan=lifespan,
 )
+setup_cors(app)
 
 app.include_router(api_router)
 
