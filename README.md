@@ -85,3 +85,13 @@ app/api/
 ```
 
 All routers are registered in `app/api/v1/api.py` and included in `app/main.py`.
+## Logging
+
+The application uses Python's built-in `logging` module with centralized configuration.
+
+### Features
+
+- Centralized logging configuration
+- Configurable log level
+- Startup and shutdown logging
+- Standardized log format
