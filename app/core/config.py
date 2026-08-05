@@ -1,28 +1,41 @@
-from functools import lru_cache
+from functools import cached_property
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    APP_NAME: str = "FastAPI Backend Starter"
-    APP_VERSION: str = "0.1.0"
+    # Application
+    APP_NAME: str 
+    APP_VERSION: str 
 
-    DEBUG: bool = True
+    # Server
+    HOST: str 
+    PORT: int 
 
-    HOST: str = "0.0.0.0"
-    PORT: int = 8000
-    LOG_LEVEL: str = "INFO"
+    # Environment
+    DEBUG: bool 
+    LOG_LEVEL: str 
+    
+    # Database
+    DB_HOST: str 
+    DB_PORT: int 
+    DB_NAME: str 
+    DB_USER: str 
+    DB_PASSWORD: str 
 
     model_config = SettingsConfigDict(
         env_file=".env",
-        case_sensitive=True,
         extra="ignore",
     )
 
+    @cached_property
+    def database_url(self) -> str:
+        return (
+            f"postgresql+asyncpg://"
+            f"{self.DB_USER}:{self.DB_PASSWORD}"
+            f"@{self.DB_HOST}:{self.DB_PORT}"
+            f"/{self.DB_NAME}"
+        )
 
-@lru_cache
-def get_settings() -> Settings:
-    return Settings()
 
-
-settings = get_settings()
+settings = Settings()
