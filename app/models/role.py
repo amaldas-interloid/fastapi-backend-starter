@@ -4,9 +4,8 @@ from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
-from app.models.base_model import BaseModelMixin
 from app.models.associations import role_permissions
-
+from app.models.base_model import BaseModelMixin
 
 if TYPE_CHECKING:
     from app.models.permission import Permission

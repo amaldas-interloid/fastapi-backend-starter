@@ -1,5 +1,4 @@
 import uuid
-
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Boolean, ForeignKey, String
@@ -9,8 +8,8 @@ from app.db.base import Base
 from app.models.base_model import BaseModelMixin
 
 if TYPE_CHECKING:
-    from app.models.role import Role
     from app.models.refresh_token import RefreshToken
+    from app.models.role import Role
 
 
 

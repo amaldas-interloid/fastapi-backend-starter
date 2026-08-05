@@ -2,16 +2,14 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from app.api.v1.api import api_router
+from app.core.config import settings
 from app.core.logging import logger, setup_logging
 from app.db.session import check_database_connection
-from app.core.config import settings
-from app.api.v1.api import api_router
 from app.middleware.cors import setup_cors
 from app.middleware.process_time import ProcessTimeMiddleware
 from app.middleware.request_id import RequestIDMiddleware
 from app.middleware.request_logging import RequestLoggingMiddleware
-
-
 
 setup_logging()
 

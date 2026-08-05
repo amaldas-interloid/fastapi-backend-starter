@@ -1,7 +1,7 @@
 import uuid
 from datetime import UTC, datetime
 
-from sqlalchemy import DateTime, UUID
+from sqlalchemy import UUID, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
 
 
