@@ -117,3 +117,11 @@ Logs every HTTP request with:
 - HTTP method
 - Request path
 - Response status code
+
+### Base Models
+
+The project uses reusable SQLAlchemy mixins to provide:
+
+- UUID primary keys
+- Automatic `created_at` timestamps
+- Automatic `updated_at` timestamps
