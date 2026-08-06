@@ -16,6 +16,7 @@ dependencies = [
     "sqlalchemy>=2.0.51",
     "asyncpg>=0.31.0",
     "alembic>=1.19.0",
+    "pwdlib[argon2]>=0.3.0",
 ]
 
 [dependency-groups]
