@@ -25,14 +25,13 @@ class Role(BaseModelMixin, Base):
     description: Mapped[str | None] = mapped_column(
         String(255),
         nullable=True,
-    ) 
+    )
 
     users: Mapped[list["User"]] = relationship(
-    back_populates="role",
+        back_populates="role",
     )
 
     permissions: Mapped[list["Permission"]] = relationship(
-    secondary=role_permissions,
-    back_populates="roles",
+        secondary=role_permissions,
+        back_populates="roles",
     )
-    

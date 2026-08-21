@@ -8,14 +8,12 @@ from app.repositories.base import BaseRepository
 class RoleRepository(BaseRepository[Role]):
     def __init__(self, session: AsyncSession) -> None:
         super().__init__(session, Role)
-        
+
     async def get_by_name(
         self,
         name: str,
     ) -> Role | None:
-        result = await self.session.execute(
-            select(Role).where(Role.name == name)
-        )
+        result = await self.session.execute(select(Role).where(Role.name == name))
 
         return result.scalar_one_or_none()
 
@@ -23,4 +21,4 @@ class RoleRepository(BaseRepository[Role]):
         self,
         name: str,
     ) -> bool:
-        return await self.get_by_name(name) is not None 
+        return await self.get_by_name(name) is not None

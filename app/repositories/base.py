@@ -25,9 +25,7 @@ class BaseRepository(Generic[ModelType]):
         return await self.session.get(self.model, id)
 
     async def get_all(self) -> list[ModelType]:
-        result = await self.session.execute(
-            select(self.model)
-        )
+        result = await self.session.execute(select(self.model))
         return list(result.scalars().all())
 
     async def create(

@@ -12,7 +12,6 @@ if TYPE_CHECKING:
     from app.models.role import Role
 
 
-
 class User(BaseModelMixin, Base):
     __tablename__ = "users"
 
@@ -54,7 +53,6 @@ class User(BaseModelMixin, Base):
     )
 
     refresh_tokens: Mapped[list["RefreshToken"]] = relationship(
-    back_populates="user",
-    cascade="all, delete-orphan",
+        back_populates="user",
+        cascade="all, delete-orphan",
     )
-

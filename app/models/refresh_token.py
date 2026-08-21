@@ -26,7 +26,7 @@ class RefreshToken(BaseModelMixin, Base):
         default=False,
         nullable=False,
     )
-    
+
     expires_at: Mapped[datetime] = mapped_column(
         nullable=False,
     )

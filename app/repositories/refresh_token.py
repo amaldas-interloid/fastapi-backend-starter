@@ -17,9 +17,7 @@ class RefreshTokenRepository(BaseRepository[RefreshToken]):
         token: str,
     ) -> RefreshToken | None:
         result = await self.session.execute(
-            select(RefreshToken).where(
-                RefreshToken.token == token
-            )
+            select(RefreshToken).where(RefreshToken.token == token)
         )
 
         return result.scalar_one_or_none()
@@ -27,7 +25,7 @@ class RefreshTokenRepository(BaseRepository[RefreshToken]):
     async def revoke(
         self,
         token: RefreshToken,
-    )->None:
+    ) -> None:
         token.is_revoked = True
         await self.session.flush()
 
@@ -45,9 +43,7 @@ class RefreshTokenRepository(BaseRepository[RefreshToken]):
 
     async def delete_expired(self) -> None:
         await self.session.execute(
-            delete(RefreshToken).where(
-                RefreshToken.expires_at < datetime.now(UTC)
-            )
+            delete(RefreshToken).where(RefreshToken.expires_at < datetime.now(UTC))
         )
 
         await self.session.flush()
